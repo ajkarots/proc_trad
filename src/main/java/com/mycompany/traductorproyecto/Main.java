@@ -4,6 +4,7 @@
  */
 package com.mycompany.traductorproyecto;
 
+import controladores.Juego;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
