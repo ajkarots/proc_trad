@@ -1,0 +1,30 @@
+Categoria: Animales
+cat, gato
+dog, perro
+bird, pájaro
+lion, leon
+panther, pantera
+elepanth, elefante
+tiger, tigre
+snake, serpiente
+
+Categoria: Frutas
+apple, manzana
+banana, plátano
+orange, naranja
+
+Categoria: Vehiculos
+car, coche
+plane, avión
+boat, bote
+ship, barco
+train, tren
+
+Categoria: instrumentos
+guitar, guitarra
+drums, bateria
+accordion, acordeon
+saxophone, saxofón
+piano, piano
+xylophone, xilófono
+violín,violin
