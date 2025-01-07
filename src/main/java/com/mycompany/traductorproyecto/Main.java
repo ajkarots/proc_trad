@@ -4,9 +4,11 @@
  */
 package com.mycompany.traductorproyecto;
 
-import controladores.Juego;
+import modelo.Juego;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import vistas.FramePrincipal;
+import vistas.menu;
 
 /**
  *
@@ -18,6 +20,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Juego juego = new Juego();
-    juego.menu();
-}}
+//        modelo.Juego juego = new Juego();
+//        juego.menu();
+        vistas.menu menu = new menu();
+        menu.setVisible(true);
+        
+    }
+}

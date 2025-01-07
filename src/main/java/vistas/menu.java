@@ -4,6 +4,14 @@
  */
 package vistas;
 
+import controladores.Controlador;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author HP
@@ -13,9 +21,45 @@ public class menu extends javax.swing.JFrame {
     /**
      * Creates new form ventana_juego
      */
+    controladores.Controlador controlador ;
+    private JPanel paneles;
+
     public menu() {
-        initComponents();
-    }
+    initComponents();
+    modelo.Juego juego = new modelo.Juego();
+    this.controlador = new Controlador();
+
+    // Crear un contenedor para centrar los paneles
+    JPanel contenedorCentrado = new JPanel(new GridBagLayout());
+    
+    // Crear el panel con CardLayout para manejar las vistas
+    paneles = new JPanel(new CardLayout());
+    paneles.add(jPnlMenu, "menu"); // Panel principal del menú
+    paneles.add(new Importar_palabras(), "importar");
+    paneles.add(new añadir_categorias(),"categoria");
+    paneles.add(new añadir_categorias(),"categoria");
+    paneles.add(new añadir_categorias(),"categoria");
+    paneles.add(new añadir_categorias(),"categoria");
+    
+
+    // Agregar el panel con CardLayout al contenedor centrado
+    contenedorCentrado.add(paneles, new GridBagConstraints());
+
+    // Configurar el panel exterior
+    jPanel3.setLayout(new BorderLayout());
+    jPanel3.add(contenedorCentrado, BorderLayout.CENTER);
+
+    // Mostrar el panel inicial
+    mostrarPanel("menu");
+    this.setSize(800, 600); // Define el tamaño de la ventana (puedes ajustarlo)
+    this.setLocationRelativeTo(null); // Centra la ventana en la pantalla
+    this.setVisible(true); // Mostrar la ventana
+}
+
+private void mostrarPanel(String panel) {
+    CardLayout layout = (CardLayout) paneles.getLayout();
+    layout.show(paneles, panel);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +70,22 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jpanelExterior = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        boton_ciudades = new javax.swing.JButton();
-        bonton_categoria = new javax.swing.JButton();
-        boton_palabras = new javax.swing.JButton();
-        boton_ = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jPnlMenu = new javax.swing.JPanel();
+        jbtnImport = new javax.swing.JButton();
+        jBtnCategorias = new javax.swing.JButton();
+        jBtnPalabras = new javax.swing.JButton();
+        jBtnJugadores = new javax.swing.JButton();
+        jBtnIniciar = new javax.swing.JButton();
+        jBtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelExterior.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 8)); // NOI18N
         jLabel1.setText("FIESTRA");
@@ -72,93 +117,118 @@ public class menu extends javax.swing.JFrame {
                     .addComponent(jLabel2)))
         );
 
-        boton_ciudades.setText("Importar palabras");
-        boton_ciudades.addActionListener(new java.awt.event.ActionListener() {
+        jPnlMenu.setBackground(new java.awt.Color(255, 255, 255));
+        jPnlMenu.setForeground(new java.awt.Color(255, 255, 255));
+
+        jbtnImport.setText("Importar palabras");
+        jbtnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_ciudadesActionPerformed(evt);
+                jbtnImportActionPerformed(evt);
             }
         });
 
-        bonton_categoria.setText("Añadir categoria");
-        bonton_categoria.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCategorias.setText("Añadir categoria");
+        jBtnCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bonton_categoriaActionPerformed(evt);
+                jBtnCategoriasActionPerformed(evt);
             }
         });
 
-        boton_palabras.setText("Añadir palabras");
+        jBtnPalabras.setText("Añadir palabras");
 
-        boton_.setText("Registrar jugadores");
+        jBtnJugadores.setText("Registrar jugadores");
 
-        jButton5.setText("Iniciar Juego");
+        jBtnIniciar.setText("Iniciar Juego");
 
-        jButton6.setText("Salir");
+        jBtnSalir.setText("Salir");
+        jBtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPnlMenuLayout = new javax.swing.GroupLayout(jPnlMenu);
+        jPnlMenu.setLayout(jPnlMenuLayout);
+        jPnlMenuLayout.setHorizontalGroup(
+            jPnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnlMenuLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(jPnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnCategorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnImport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnPalabras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jBtnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        jPnlMenuLayout.setVerticalGroup(
+            jPnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnlMenuLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jbtnImport)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnCategorias)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnPalabras)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnJugadores)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnIniciar)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnSalir)
+                .addContainerGap(120, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(241, 241, 241)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bonton_categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_ciudades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_palabras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(236, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(boton_ciudades)
-                .addGap(18, 18, 18)
-                .addComponent(bonton_categoria)
-                .addGap(18, 18, 18)
-                .addComponent(boton_palabras)
-                .addGap(18, 18, 18)
-                .addComponent(boton_)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jpanelExteriorLayout = new javax.swing.GroupLayout(jpanelExterior);
+        jpanelExterior.setLayout(jpanelExteriorLayout);
+        jpanelExteriorLayout.setHorizontalGroup(
+            jpanelExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanelExteriorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jpanelExteriorLayout.createSequentialGroup()
+                .addGap(226, 226, 226)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jpanelExteriorLayout.setVerticalGroup(
+            jpanelExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanelExteriorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(59, 59, 59)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jpanelExterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jpanelExterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -170,13 +240,20 @@ public class menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void bonton_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bonton_categoriaActionPerformed
+    private void jBtnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCategoriasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bonton_categoriaActionPerformed
+    }//GEN-LAST:event_jBtnCategoriasActionPerformed
 
-    private void boton_ciudadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ciudadesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_ciudadesActionPerformed
+    private void jbtnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportActionPerformed
+            mostrarPanel("importar");
+        
+    }//GEN-LAST:event_jbtnImportActionPerformed
+
+    private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "está seguro de salir?")==0) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_jBtnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,16 +292,17 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bonton_categoria;
-    private javax.swing.JButton boton_;
-    private javax.swing.JButton boton_ciudades;
-    private javax.swing.JButton boton_palabras;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jBtnCategorias;
+    private javax.swing.JButton jBtnIniciar;
+    private javax.swing.JButton jBtnJugadores;
+    private javax.swing.JButton jBtnPalabras;
+    private javax.swing.JButton jBtnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPnlMenu;
+    private javax.swing.JButton jbtnImport;
+    private javax.swing.JPanel jpanelExterior;
     // End of variables declaration//GEN-END:variables
 }

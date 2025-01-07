@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controladores;
+package modelo;
 
 import modelo.Jugador;
 import modelo.Categoria;
@@ -30,12 +30,19 @@ public class Juego {
    List<Jugador> jugadores;
    Scanner scanner;
    Random random;
+   private static Juego instancia;
 
-    public Juego() {
+    private Juego() {
         this.categorias = new ArrayList<>();
         this.jugadores = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.random = new Random();
+    }
+     public static Juego getInstancia() {
+        if (instancia == null) {
+            instancia = new Juego();
+        }
+        return instancia;
     }
     
     public void importarPalabras(String juegoCtegorias){
