@@ -4,21 +4,27 @@
  */
 package modelo;
 
+import controladores.Controlador_Categorias;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class ModeloJuego {
     private List<Categoria> categorias;
+    private Controlador_Categorias controlCategorias;
     private List<Jugador> jugadores;
     private int indiceJugadorActual;
+    private controladores.ControladorJugadores contorljugadores;
+    private ImportarPalabras palabras;
     private Random random;
     private long startTime;
+    private List<Categoria> listaCategorias;
 
-    public ModeloJuego() {
-        this.categorias = new ArrayList<>();
-        this.jugadores = new ArrayList<>();
+    public ModeloJuego(List<Categoria> listaCategorias,List<ju) {
+        this.jugadores = contorljugadores.getListaJugadores();
+        this.listaCategorias=listaCategorias;
         this.random = new Random();
+        
     }
 
     public List<Categoria> getCategorias() {

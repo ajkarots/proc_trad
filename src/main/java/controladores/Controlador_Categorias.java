@@ -16,13 +16,11 @@ public class Controlador_Categorias implements ActionListener {
     public Controlador_Categorias(FrmAnadir_categorias frcategorias, ImportarPalabras importarPalabras) {
         this.frcategorias = frcategorias;
         this.listaCategorias = importarPalabras.getCategorias();
-        configurarListeners();
-    }
-
-    private void configurarListeners() {
         this.frcategorias.btnAgregar.addActionListener(this);
         this.frcategorias.jbtnVolver.addActionListener(this);
     }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -34,7 +32,7 @@ public class Controlador_Categorias implements ActionListener {
     }
 
     private void anadirCategoria() {
-        String nombreCategoria = frcategorias.getCategoria();
+        String nombreCategoria = frcategorias.jtxtCategoria_nueva.getText();
 
         if (nombreCategoria.isEmpty()) {
             JOptionPane.showMessageDialog(frcategorias, "El nombre de la categoría no puede estar vacío.", "Advertencia", JOptionPane.WARNING_MESSAGE);

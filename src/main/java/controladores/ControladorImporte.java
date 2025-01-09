@@ -20,6 +20,7 @@ public class ControladorImporte implements ActionListener {
     public ControladorImporte(ImportarPalabras modeloJuego, FrameImportar_palabras vistaPalabras) {
         this.modeloImporte = modeloJuego;
         this.vistaPalabras = vistaPalabras;
+        
         configurarListeners();
     }
 

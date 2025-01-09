@@ -6,6 +6,8 @@ package vistas;
 
 import controladores.Controlador;
 import controladores.ControladorImporte;
+import controladores.ControladorJuego;
+import controladores.ControladorJugadores;
 import controladores.ControladorPalabras;
 import controladores.Controlador_Categorias;
 import java.awt.BorderLayout;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Categoria;
 import modelo.ImportarPalabras;
+import modelo.ModeloJuego;
 
 /**
  *
@@ -29,10 +32,11 @@ public class menu extends javax.swing.JFrame {
      */
     controladores.Controlador controlador;
     private JPanel paneles;
+
     ImportarPalabras modeloImportar = new ImportarPalabras();
     FrameImportar_palabras vistaImportar = new FrameImportar_palabras();
     ControladorImporte controladorImporte = new ControladorImporte(modeloImportar, vistaImportar);
-    
+
     public menu() {
         initComponents();
 
@@ -44,7 +48,7 @@ public class menu extends javax.swing.JFrame {
         paneles.add(jPnlMenu, "menu"); // Panel principal del menú
         paneles.add(vistaImportar, "importar");
         paneles.add(new FrmAnadir_categorias(), "categorias");
-        paneles.add(new añadir_Jugadores(), "jugadores");
+        paneles.add(new FrmAnadirJugadores(), "jugadores");
         paneles.add(new FrameAnadir_palabras(), "palabras");
         paneles.add(new FrmJuego(), "juego");
 
@@ -86,7 +90,7 @@ public class menu extends javax.swing.JFrame {
         jBtnCategorias = new javax.swing.JButton();
         jBtnPalabras = new javax.swing.JButton();
         jBtnJugadores = new javax.swing.JButton();
-        jBtnIniciar = new javax.swing.JButton();
+        jBtnJuego = new javax.swing.JButton();
         jBtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,10 +158,10 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jBtnIniciar.setText("Iniciar Juego");
-        jBtnIniciar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnJuego.setText("Iniciar Juego");
+        jBtnJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIniciarActionPerformed(evt);
+                jBtnJuegoActionPerformed(evt);
             }
         });
 
@@ -179,7 +183,7 @@ public class menu extends javax.swing.JFrame {
                     .addComponent(jbtnImport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnPalabras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jBtnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(317, Short.MAX_VALUE))
         );
@@ -195,7 +199,7 @@ public class menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jBtnJugadores)
                 .addGap(18, 18, 18)
-                .addComponent(jBtnIniciar)
+                .addComponent(jBtnJuego)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnSalir)
                 .addContainerGap(121, Short.MAX_VALUE))
@@ -261,18 +265,19 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jBtnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCategoriasActionPerformed
-    FrmAnadir_categorias vistaCategorias = new FrmAnadir_categorias();
-    modelo.ModeloJuego juego = new modelo.ModeloJuego();
-    Controlador_Categorias controladorCategorias = new Controlador_Categorias(vistaCategorias,modeloImportar);
 
+        // Obtén la referencia existente en el panel
+        FrmAnadir_categorias vistaCategorias = (FrmAnadir_categorias) paneles.getComponent(2); // Índice correspondiente al panel de categorías
+        new Controlador_Categorias(vistaCategorias, modeloImportar);
         mostrarPanel("categorias");
-        
+
+
     }//GEN-LAST:event_jBtnCategoriasActionPerformed
 
     private void jbtnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportActionPerformed
-        FrameImportar_palabras vistaImportar = new FrameImportar_palabras();
-        ControladorImporte controladorImporte = new ControladorImporte(modeloImportar, vistaImportar);
-        
+        // Utiliza la instancia existente en el panel
+        FrameImportar_palabras vistaImportar = (FrameImportar_palabras) paneles.getComponent(1); // Índice correspondiente al panel "importar"
+        new ControladorImporte(modeloImportar, vistaImportar);
         mostrarPanel("importar");
 
     }//GEN-LAST:event_jbtnImportActionPerformed
@@ -284,20 +289,26 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnSalirActionPerformed
 
     private void jBtnPalabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPalabrasActionPerformed
-        FrameAnadir_palabras vistaPalabras = new FrameAnadir_palabras();
-        modelo.ModeloJuego juego = new modelo.ModeloJuego();
-        List<Categoria> listaCategorias = juego.getCategorias();
-        ControladorPalabras control = new ControladorPalabras(vistaPalabras, modeloImportar);
+        // Utiliza la instancia existente en el panel
+        FrameAnadir_palabras vistaPalabras = (FrameAnadir_palabras) paneles.getComponent(4); // Índice correspondiente al panel "palabras"
+        new ControladorPalabras(vistaPalabras, modeloImportar);
         mostrarPanel("palabras");
     }//GEN-LAST:event_jBtnPalabrasActionPerformed
 
     private void jBtnJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnJugadoresActionPerformed
+        FrmAnadirJugadores vistaJugador = (FrmAnadirJugadores) paneles.getComponent(3);
+        new ControladorJugadores(vistaJugador);
         mostrarPanel("jugadores");
     }//GEN-LAST:event_jBtnJugadoresActionPerformed
 
-    private void jBtnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIniciarActionPerformed
+    private void jBtnJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnJuegoActionPerformed
+        FrmJuego vistajuego = (FrmJuego) paneles.getComponent(5);
+        ModeloJuego modeloJuego = new ModeloJuego(modeloImportar.getCategorias()); // Asegúrate de usar siempre la misma instancia.
+        new ControladorJuego(modeloJuego, vistajuego);
         mostrarPanel("juego");
-    }//GEN-LAST:event_jBtnIniciarActionPerformed
+        
+
+    }//GEN-LAST:event_jBtnJuegoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,7 +348,7 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCategorias;
-    private javax.swing.JButton jBtnIniciar;
+    private javax.swing.JButton jBtnJuego;
     private javax.swing.JButton jBtnJugadores;
     private javax.swing.JButton jBtnPalabras;
     private javax.swing.JButton jBtnSalir;

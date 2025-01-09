@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author HP
  */
-public class añadir_Jugadores extends javax.swing.JPanel {
+public class FrmAnadirJugadores extends javax.swing.JPanel {
 
     /**
      * Creates new form añadir_Jugadores
      */
     Controlador controlador;
 
-    public añadir_Jugadores() {
+    public FrmAnadirJugadores() {
         initComponents();
         activarJugadores();
     }
@@ -32,21 +32,21 @@ public class añadir_Jugadores extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtfield1 = new javax.swing.JTextField();
+        txtJugador1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtJugador2 = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
         jCmbJugadores = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -54,24 +54,24 @@ public class añadir_Jugadores extends javax.swing.JPanel {
 
         jLabel3.setText("Jugador 1 :");
 
-        txtfield1.addActionListener(new java.awt.event.ActionListener() {
+        txtJugador1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfield1ActionPerformed(evt);
+                txtJugador1ActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Jugador 2 :");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtJugador2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtJugador2ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -102,13 +102,13 @@ public class añadir_Jugadores extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
+                            .addComponent(txtJugador2)
                             .addComponent(jCmbJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
-                    .addComponent(txtfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnVolver)
+                            .addComponent(btnAgregar)))
+                    .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,38 +117,38 @@ public class añadir_Jugadores extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1)
+                    .addComponent(btnVolver)
                     .addComponent(jCmbJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfield1ActionPerformed
+    private void txtJugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJugador1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfield1ActionPerformed
+    }//GEN-LAST:event_txtJugador1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtJugador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJugador2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtJugador2ActionPerformed
 
     private void jCmbJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCmbJugadoresActionPerformed
 activarJugadores();
     }//GEN-LAST:event_jCmbJugadoresActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         /*String jugador1 = txtfield1.getText().trim();
         String jugador2 = jTextField2.getText().trim();
 
@@ -169,23 +169,23 @@ activarJugadores();
         }
         this.setVisible(false);
         */
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
     void activarJugadores() {
         if (jCmbJugadores.getSelectedIndex() == 1) {
-            jTextField2.setEnabled(true);
+            txtJugador2.setEnabled(true);
         } else {
-            jTextField2.setEnabled(false);
+            txtJugador2.setEnabled(false);
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jCmbJugadores;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField txtfield1;
+    public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnVolver;
+    public javax.swing.JComboBox<String> jCmbJugadores;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JTextField txtJugador1;
+    public javax.swing.JTextField txtJugador2;
     // End of variables declaration//GEN-END:variables
 }

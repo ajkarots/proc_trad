@@ -14,27 +14,33 @@ import java.util.List;
 
 public class ControladorJuego implements ActionListener {
     private ModeloJuego modeloJuego;
-    private FrmJuego vistaJuego;
+    public FrmJuego vistaJuego;
 
     public ControladorJuego(ModeloJuego modeloJuego, FrmJuego vistaJuego) {
         this.modeloJuego = modeloJuego;
         this.vistaJuego = vistaJuego;
+        iniciarJuego();
         configurarListeners();
+        
     }
 
     private void configurarListeners() {
-        vistaJuego.getBtnAceptar().addActionListener(this);
-        vistaJuego.getBtnSiguiente().addActionListener(this);
-    }
+    vistaJuego.getBtnAceptar().addActionListener(this);
+    vistaJuego.getBtnSiguiente().addActionListener(this);
+    vistaJuego.getBtnVolver().addActionListener(this);  // Usar el getter
+}
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == vistaJuego.getBtnAceptar()) {
-            procesarRespuesta();
-        } else if (e.getSource() == vistaJuego.getBtnSiguiente()) {
-            siguienteTurno();
-        }
+@Override
+public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == vistaJuego.getBtnAceptar()) {
+        procesarRespuesta();
+    } else if (e.getSource() == vistaJuego.getBtnSiguiente()) {
+        siguienteTurno();
+    } else if (e.getSource() == vistaJuego.getBtnVolver()) {
+        vistaJuego.setVisible(false);
     }
+}
+
 
     private void iniciarTurno(Jugador jugador) {
         Categoria categoria = modeloJuego.categoriaRandom();

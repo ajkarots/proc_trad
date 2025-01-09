@@ -42,7 +42,7 @@ public class FrmAnadir_categorias extends javax.swing.JPanel {
 
         jLabel1.setText("Nombre de la Categoria:");
 
-        jbtnVolver.setText("jButton1");
+        jbtnVolver.setText("Volver");
 
         btnAgregar.setText("agregar");
 

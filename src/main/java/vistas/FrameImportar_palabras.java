@@ -40,11 +40,9 @@ public class FrameImportar_palabras extends javax.swing.JPanel {
 
         jLabel2.setText("Ruta del archivo:");
 
-        jtxtRuta.setText("jTextField1");
+        jbtnVolver.setText("Volver");
 
-        jbtnVolver.setText("jButton1");
-
-        jbtnImportar.setText("jButton1");
+        jbtnImportar.setText("Importar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

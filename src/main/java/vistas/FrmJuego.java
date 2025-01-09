@@ -1,22 +1,17 @@
-
 package vistas;
 
-import controladores.Controlador;
 import javax.swing.JButton;
-
 
 public class FrmJuego extends javax.swing.JPanel {
 
     /**
      * Creates new form Juego
      */
-    controladores.Controlador control;
     public FrmJuego() {
         initComponents();
-        
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,6 +24,7 @@ public class FrmJuego extends javax.swing.JPanel {
         txtRespuesta = new javax.swing.JTextField();
         txtNombreJugador = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(600, 400));
@@ -42,6 +38,8 @@ public class FrmJuego extends javax.swing.JPanel {
         btnAceptar.setText("Aceptar");
 
         btnSiguiente.setText("Siguiente");
+
+        btnVolver.setText("Terminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,6 +67,10 @@ public class FrmJuego extends javax.swing.JPanel {
                             .addComponent(txtRespuesta)
                             .addComponent(txtPalabraTraducir))))
                 .addGap(200, 200, 200))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(btnVolver)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,11 +91,11 @@ public class FrmJuego extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnSiguiente))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(62, 62, 62))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-   
 
     // Getters para los componentes
     public JButton getBtnAceptar() {
@@ -107,7 +109,6 @@ public class FrmJuego extends javax.swing.JPanel {
     public String getCampoRespuesta() {
         return txtRespuesta.getText().trim();
     }
-    
 
     public void setJugadorActual(String nombreJugador) {
         txtNombreJugador.setText(nombreJugador);
@@ -123,11 +124,19 @@ public class FrmJuego extends javax.swing.JPanel {
         txtNombreJugador.setText("");
     }
 
+    public JButton getBtnVolver() {
+        return btnVolver;
+    }
+    public String getPalabraTraducir() {
+    return txtPalabraTraducir.getText().trim();
+}
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAceptar;
     public javax.swing.JButton btnSiguiente;
+    public javax.swing.JButton btnVolver;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;

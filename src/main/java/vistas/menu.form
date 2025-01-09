@@ -158,7 +158,7 @@
                               <Component id="jbtnImport" alignment="0" max="32767" attributes="0"/>
                               <Component id="jBtnPalabras" alignment="0" max="32767" attributes="0"/>
                               <Component id="jBtnJugadores" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jBtnIniciar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jBtnJuego" alignment="0" max="32767" attributes="0"/>
                               <Component id="jBtnSalir" min="-2" pref="123" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="317" max="32767" attributes="0"/>
@@ -177,7 +177,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jBtnJugadores" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jBtnIniciar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBtnJuego" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jBtnSalir" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="121" max="32767" attributes="0"/>
@@ -218,12 +218,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnJugadoresActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jBtnIniciar">
+                <Component class="javax.swing.JButton" name="jBtnJuego">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Iniciar Juego"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIniciarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnJuegoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jBtnSalir">
