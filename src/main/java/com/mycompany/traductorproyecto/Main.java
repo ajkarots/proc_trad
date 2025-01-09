@@ -4,10 +4,9 @@
  */
 package com.mycompany.traductorproyecto;
 
-import modelo.Juego;
+import modelo.ModeloJuego;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-import vistas.FramePrincipal;
 import vistas.menu;
 
 /**

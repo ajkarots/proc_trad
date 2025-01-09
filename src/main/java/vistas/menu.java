@@ -5,12 +5,18 @@
 package vistas;
 
 import controladores.Controlador;
+import controladores.ControladorImporte;
+import controladores.ControladorPalabras;
+import controladores.Controlador_Categorias;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import modelo.Categoria;
+import modelo.ImportarPalabras;
 
 /**
  *
@@ -21,45 +27,45 @@ public class menu extends javax.swing.JFrame {
     /**
      * Creates new form ventana_juego
      */
-    controladores.Controlador controlador ;
+    controladores.Controlador controlador;
     private JPanel paneles;
-
+    ImportarPalabras modeloImportar = new ImportarPalabras();
+    FrameImportar_palabras vistaImportar = new FrameImportar_palabras();
+    ControladorImporte controladorImporte = new ControladorImporte(modeloImportar, vistaImportar);
+    
     public menu() {
-    initComponents();
-    modelo.Juego juego = new modelo.Juego();
-    this.controlador = new Controlador();
+        initComponents();
 
-    // Crear un contenedor para centrar los paneles
-    JPanel contenedorCentrado = new JPanel(new GridBagLayout());
-    
-    // Crear el panel con CardLayout para manejar las vistas
-    paneles = new JPanel(new CardLayout());
-    paneles.add(jPnlMenu, "menu"); // Panel principal del menú
-    paneles.add(new Importar_palabras(), "importar");
-    paneles.add(new añadir_categorias(),"categoria");
-    paneles.add(new añadir_categorias(),"categoria");
-    paneles.add(new añadir_categorias(),"categoria");
-    paneles.add(new añadir_categorias(),"categoria");
-    
+        // Crear un contenedor para centrar los paneles
+        JPanel contenedorCentrado = new JPanel(new GridBagLayout());
 
-    // Agregar el panel con CardLayout al contenedor centrado
-    contenedorCentrado.add(paneles, new GridBagConstraints());
+        // Crear el panel con CardLayout para manejar las vistas
+        paneles = new JPanel(new CardLayout());
+        paneles.add(jPnlMenu, "menu"); // Panel principal del menú
+        paneles.add(vistaImportar, "importar");
+        paneles.add(new FrmAnadir_categorias(), "categorias");
+        paneles.add(new añadir_Jugadores(), "jugadores");
+        paneles.add(new FrameAnadir_palabras(), "palabras");
+        paneles.add(new FrmJuego(), "juego");
 
-    // Configurar el panel exterior
-    jPanel3.setLayout(new BorderLayout());
-    jPanel3.add(contenedorCentrado, BorderLayout.CENTER);
+        // Agregar el panel con CardLayout al contenedor centrado
+        contenedorCentrado.add(paneles, new GridBagConstraints());
 
-    // Mostrar el panel inicial
-    mostrarPanel("menu");
-    this.setSize(800, 600); // Define el tamaño de la ventana (puedes ajustarlo)
-    this.setLocationRelativeTo(null); // Centra la ventana en la pantalla
-    this.setVisible(true); // Mostrar la ventana
-}
+        // Configurar el panel exterior
+        jPanel3.setLayout(new BorderLayout());
+        jPanel3.add(contenedorCentrado, BorderLayout.CENTER);
 
-private void mostrarPanel(String panel) {
-    CardLayout layout = (CardLayout) paneles.getLayout();
-    layout.show(paneles, panel);
-}
+        // Mostrar el panel inicial
+        mostrarPanel("menu");
+        this.setSize(800, 600); // Define el tamaño de la ventana (puedes ajustarlo)
+        this.setLocationRelativeTo(null); // Centra la ventana en la pantalla
+        this.setVisible(true); // Mostrar la ventana
+    }
+
+    private void mostrarPanel(String panel) {
+        CardLayout layout = (CardLayout) paneles.getLayout();
+        layout.show(paneles, panel);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -135,10 +141,25 @@ private void mostrarPanel(String panel) {
         });
 
         jBtnPalabras.setText("Añadir palabras");
+        jBtnPalabras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPalabrasActionPerformed(evt);
+            }
+        });
 
         jBtnJugadores.setText("Registrar jugadores");
+        jBtnJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnJugadoresActionPerformed(evt);
+            }
+        });
 
         jBtnIniciar.setText("Iniciar Juego");
+        jBtnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIniciarActionPerformed(evt);
+            }
+        });
 
         jBtnSalir.setText("Salir");
         jBtnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +173,7 @@ private void mostrarPanel(String panel) {
         jPnlMenuLayout.setHorizontalGroup(
             jPnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnlMenuLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(285, 285, 285)
                 .addGroup(jPnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBtnCategorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbtnImport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,12 +181,12 @@ private void mostrarPanel(String panel) {
                     .addComponent(jBtnJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jBtnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         jPnlMenuLayout.setVerticalGroup(
             jPnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnlMenuLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(47, 47, 47)
                 .addComponent(jbtnImport)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnCategorias)
@@ -177,7 +198,7 @@ private void mostrarPanel(String panel) {
                 .addComponent(jBtnIniciar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnSalir)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -191,10 +212,9 @@ private void mostrarPanel(String panel) {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jpanelExteriorLayout = new javax.swing.GroupLayout(jpanelExterior);
@@ -206,18 +226,18 @@ private void mostrarPanel(String panel) {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jpanelExteriorLayout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(106, 106, 106)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jpanelExteriorLayout.setVerticalGroup(
             jpanelExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelExteriorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(77, 77, 77)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -241,19 +261,43 @@ private void mostrarPanel(String panel) {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jBtnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCategoriasActionPerformed
-        // TODO add your handling code here:
+    FrmAnadir_categorias vistaCategorias = new FrmAnadir_categorias();
+    modelo.ModeloJuego juego = new modelo.ModeloJuego();
+    Controlador_Categorias controladorCategorias = new Controlador_Categorias(vistaCategorias,modeloImportar);
+
+        mostrarPanel("categorias");
+        
     }//GEN-LAST:event_jBtnCategoriasActionPerformed
 
     private void jbtnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportActionPerformed
-            mostrarPanel("importar");
+        FrameImportar_palabras vistaImportar = new FrameImportar_palabras();
+        ControladorImporte controladorImporte = new ControladorImporte(modeloImportar, vistaImportar);
         
+        mostrarPanel("importar");
+
     }//GEN-LAST:event_jbtnImportActionPerformed
 
     private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "está seguro de salir?")==0) {
+        if (JOptionPane.showConfirmDialog(null, "está seguro de salir?") == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_jBtnSalirActionPerformed
+
+    private void jBtnPalabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPalabrasActionPerformed
+        FrameAnadir_palabras vistaPalabras = new FrameAnadir_palabras();
+        modelo.ModeloJuego juego = new modelo.ModeloJuego();
+        List<Categoria> listaCategorias = juego.getCategorias();
+        ControladorPalabras control = new ControladorPalabras(vistaPalabras, modeloImportar);
+        mostrarPanel("palabras");
+    }//GEN-LAST:event_jBtnPalabrasActionPerformed
+
+    private void jBtnJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnJugadoresActionPerformed
+        mostrarPanel("jugadores");
+    }//GEN-LAST:event_jBtnJugadoresActionPerformed
+
+    private void jBtnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIniciarActionPerformed
+        mostrarPanel("juego");
+    }//GEN-LAST:event_jBtnIniciarActionPerformed
 
     /**
      * @param args the command line arguments

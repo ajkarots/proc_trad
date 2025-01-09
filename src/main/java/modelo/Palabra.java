@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
-/**
- *
- * @author LENOVO
- */
 public class Palabra {
-    String ingles, español;
+    private String ingles;
+    private String español;
 
     public Palabra(String ingles, String español) {
         this.ingles = ingles;
@@ -23,6 +16,17 @@ public class Palabra {
     public String getEspañol() {
         return español;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Palabra palabra = (Palabra) obj;
+        return ingles.equalsIgnoreCase(palabra.ingles) && español.equalsIgnoreCase(palabra.español);
+    }
+
+    @Override
+    public int hashCode() {
+        return ingles.toLowerCase().hashCode() + español.toLowerCase().hashCode();
+    }
 }
